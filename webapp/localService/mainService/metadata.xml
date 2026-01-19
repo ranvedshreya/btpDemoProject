@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_PRODUCTDETAILS_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_ProductDetailsType" sap:label="Product wise Qty and NetValue" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_month"/>
+                    <PropertyRef Name="p_year"/>
+                    <PropertyRef Name="Product"/>
+                </Key>
+                <Property Name="p_month" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Month"/>
+                <Property Name="p_year" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Year"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="ProductDesc" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short text for sales order item"/>
+                <Property Name="Qty" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="NetValue" Type="Edm.Decimal" Precision="16" Scale="3"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+                <NavigationProperty Name="Parameters" Relationship="ZC_PRODUCTDETAILS_CDS.assoc_2F936681D24B28FC47B82E83291FBFA5" FromRole="ToRole_assoc_2F936681D24B28FC47B82E83291FBFA5" ToRole="FromRole_assoc_2F936681D24B28FC47B82E83291FBFA5" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_ProductDetailsParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_month"/>
+                    <PropertyRef Name="p_year"/>
+                </Key>
+                <Property Name="p_month" Type="Edm.String" Nullable="false" MaxLength="60" sap:parameter="mandatory" sap:label="Month" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_year" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:parameter="mandatory" sap:label="Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZC_PRODUCTDETAILS_CDS.assoc_2F936681D24B28FC47B82E83291FBFA5" FromRole="FromRole_assoc_2F936681D24B28FC47B82E83291FBFA5" ToRole="ToRole_assoc_2F936681D24B28FC47B82E83291FBFA5"/>
+            </EntityType>
+            <EntityType Name="ZC_Sales_Inv_ItemsType" sap:label="Sales Invoice Line Items" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_month"/>
+                    <PropertyRef Name="p_year"/>
+                    <PropertyRef Name="SalesInvoice"/>
+                    <PropertyRef Name="LineItem"/>
+                </Key>
+                <Property Name="p_month" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Short Description"/>
+                <Property Name="p_year" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/>
+                <Property Name="SalesInvoice" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Billing Document"/>
+                <Property Name="LineItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Billing Item"/>
+                <Property Name="InvoiceDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Billing Date"/>
+                <Property Name="SalesGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sales Group"/>
+                <Property Name="CustomerCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Payer"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="ProductDesc" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short text for sales order item"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="TotalQty" Type="Edm.Decimal" Precision="13" Scale="3"/>
+                <Property Name="TotalNetValue" Type="Edm.Decimal" Precision="16" Scale="3"/>
+                <NavigationProperty Name="Parameters" Relationship="ZC_PRODUCTDETAILS_CDS.assoc_C7111E9F405279AE27B6C365279A498B" FromRole="ToRole_assoc_C7111E9F405279AE27B6C365279A498B" ToRole="FromRole_assoc_C7111E9F405279AE27B6C365279A498B" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZC_Sales_Inv_ItemsParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_month"/>
+                    <PropertyRef Name="p_year"/>
+                </Key>
+                <Property Name="p_month" Type="Edm.String" Nullable="false" MaxLength="60" sap:parameter="mandatory" sap:label="Short Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_year" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:parameter="mandatory" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="ZC_PRODUCTDETAILS_CDS.assoc_C7111E9F405279AE27B6C365279A498B" FromRole="FromRole_assoc_C7111E9F405279AE27B6C365279A498B" ToRole="ToRole_assoc_C7111E9F405279AE27B6C365279A498B"/>
+            </EntityType>
+            <Association Name="assoc_C7111E9F405279AE27B6C365279A498B" sap:content-version="1">
+                <End Type="ZC_PRODUCTDETAILS_CDS.ZC_Sales_Inv_ItemsParameters" Multiplicity="1" Role="FromRole_assoc_C7111E9F405279AE27B6C365279A498B"/>
+                <End Type="ZC_PRODUCTDETAILS_CDS.ZC_Sales_Inv_ItemsType" Multiplicity="*" Role="ToRole_assoc_C7111E9F405279AE27B6C365279A498B"/>
+            </Association>
+            <Association Name="assoc_2F936681D24B28FC47B82E83291FBFA5" sap:content-version="1">
+                <End Type="ZC_PRODUCTDETAILS_CDS.ZC_ProductDetailsParameters" Multiplicity="1" Role="FromRole_assoc_2F936681D24B28FC47B82E83291FBFA5"/>
+                <End Type="ZC_PRODUCTDETAILS_CDS.ZC_ProductDetailsType" Multiplicity="*" Role="ToRole_assoc_2F936681D24B28FC47B82E83291FBFA5"/>
+            </Association>
+            <EntityContainer Name="ZC_PRODUCTDETAILS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_ProductDetailsSet" EntityType="ZC_PRODUCTDETAILS_CDS.ZC_ProductDetailsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_ProductDetails" EntityType="ZC_PRODUCTDETAILS_CDS.ZC_ProductDetailsParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_Sales_Inv_ItemsSet" EntityType="ZC_PRODUCTDETAILS_CDS.ZC_Sales_Inv_ItemsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_Sales_Inv_Items" EntityType="ZC_PRODUCTDETAILS_CDS.ZC_Sales_Inv_ItemsParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_2F936681D24B28FC47B82E83291FBFA5" Association="ZC_PRODUCTDETAILS_CDS.assoc_2F936681D24B28FC47B82E83291FBFA5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ProductDetails" Role="FromRole_assoc_2F936681D24B28FC47B82E83291FBFA5"/>
+                    <End EntitySet="ZC_ProductDetailsSet" Role="ToRole_assoc_2F936681D24B28FC47B82E83291FBFA5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C7111E9F405279AE27B6C365279A498B" Association="ZC_PRODUCTDETAILS_CDS.assoc_C7111E9F405279AE27B6C365279A498B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_Sales_Inv_Items" Role="FromRole_assoc_C7111E9F405279AE27B6C365279A498B"/>
+                    <End EntitySet="ZC_Sales_Inv_ItemsSet" Role="ToRole_assoc_C7111E9F405279AE27B6C365279A498B"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZC_PRODUCTDETAILS_CDS.ZC_PRODUCTDETAILS_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZC_PRODUCTDETAILS_CDS.ZC_PRODUCTDETAILS_CDS_Entities/ZC_ProductDetails" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_month</PropertyPath>
+                                <PropertyPath>p_year</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_month</PropertyPath>
+                                <PropertyPath>p_year</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_PRODUCTDETAILS_CDS.ZC_PRODUCTDETAILS_CDS_Entities/ZC_Sales_Inv_Items" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_month</PropertyPath>
+                                <PropertyPath>p_year</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_month</PropertyPath>
+                                <PropertyPath>p_year</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/sap/ZC_PRODUCTDETAILS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://sandbox-app.alkemerp.com:8001/sap/opu/odata/sap/ZC_PRODUCTDETAILS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+<mvc:View controllerName="salesincentive.controller.SalesInvoice" 
+    displayBlock="true" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Sales Invoice for Selected Product"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+
+        <Table id="salesInvoiceTable"  class="productsTable" sticky="ColumnHeaders" noDataText="Loading...">
+            <columns>
+                <Column><Text text="Sales Invoice"/></Column>
+                <Column><Text text="Line Item"/></Column>
+                <Column><Text text="Invoice Date"/></Column>
+                <Column><Text text="Sales Group"/></Column>
+                <Column><Text text="Customer Code"/></Column>
+                <Column><Text text="Customer Name"/></Column>
+                <Column><Text text="Product"/></Column>
+                <Column><Text text="Product Description"/></Column>
+                <Column><Text text="UOM"/></Column>
+                <Column><Text text="Quantity"/></Column>
+                <Column><Text text="Net Value"/></Column>
+            </columns>
+        </Table>
+    </Page>
+   
+</mvc:View>
+

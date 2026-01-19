@@ -1,0 +1,88 @@
+<mvc:View controllerName="salesincentive.controller.ProductDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" showHeader="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Title text="Product-wise Sales Summary"/>
+                </contentLeft>
+
+                <contentRight>
+                    <HBox >
+                        <Label  text="Month:" class="sapUiTinyMarginEnd"/>
+                        <Select id="monthSelect" width="90px">
+                            <items>
+                                <core:Item key="JAN" text="JAN"/>
+                                <core:Item key="FEB" text="FEB"/>
+                                <core:Item key="MAR" text="MAR"/>
+                                <core:Item key="APR" text="APR"/>
+                                <core:Item key="MAY" text="MAY"/>
+                                <core:Item key="JUN" text="JUN"/>
+                                <core:Item key="JUL" text="JUL"/>
+                                <core:Item key="AUG" text="AUG"/>
+                                <core:Item key="SEP" text="SEP"/>
+                                <core:Item key="OCT" text="OCT"/>
+                                <core:Item key="NOV" text="NOV"/>
+                                <core:Item key="DEC" text="DEC"/>
+                            </items>
+                        </Select>
+
+                        <ToolbarSpacer width="12px"/>
+
+                        <Label text="Year:" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+                        <DatePicker
+                            id="yearPicker"
+                            displayFormat="yyyy"
+                            valueFormat="yyyy"
+                            width="90px"/>
+
+                        <ToolbarSpacer width="12px"/>
+                        
+                        <Button
+                            text="Go"
+                            type="Emphasized"
+                            press="onGoPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+                        <Button
+                            text="View Chart"
+                            icon="sap-icon://bar-chart"
+                            type="Neutral"
+                            press="onChartPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+
+                    </HBox>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        
+        <ScrollContainer height="400px" vertical="true" horizontal="false">
+            <Table id="productTable" class="productsTable"
+                items="{/ZC_ProductDetailsSet}" sticky="ColumnHeaders" >
+                <columns>
+                    <Column> <Text text="Product"/> </Column>
+                    <Column> <Text text="Product Description"/> </Column>
+                    <Column> <Text text="Quantity"/> </Column>
+                    <Column> <Text text="UOM"/> </Column>
+                    <Column> <Text text="Net Value"/> </Column>
+                    <Column> <Text text="Currency"/> </Column>
+                </columns>
+
+                <ColumnListItem id="productTableItem" type="Navigation" press="onRowPress">
+                    <cells>
+                        <Text text="{Product}"></Text>
+                        <Text text="{ProductDesc}"></Text>
+                        <Text text="{Qty}"></Text>
+                        <Text text="{UOM}"></Text>
+                        <Text text="{NetValue}"></Text>
+                        <Text text="{Currency}"></Text>
+                    </cells>
+                </ColumnListItem>
+            </Table>
+        </ScrollContainer>
+    </Page>
+</mvc:View>

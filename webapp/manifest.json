@@ -1,0 +1,148 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "salesincentive",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.0",
+      "toolsId": "40acac37-d7e6-4e5d-861a-741bc7611bb5"
+    },
+    "dataSources": {
+      "ZC_PRODUCTDETAILS_CDS_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_PRODUCTDETAILS_CDS_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZC_PRODUCTDETAILS_CDS_VAN.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZC_PRODUCTDETAILS_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZC_PRODUCTDETAILS_CDS_VAN"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.39",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.viz": {} 
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "salesincentive.i18n.i18n"
+        }
+      },
+     "": {
+      "dataSource": "mainService",
+      "type": "sap.ui.model.odata.v2.ODataModel", 
+      "preload": true,
+      "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true
+      }
+    }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "salesincentive.view",
+        "async": true,
+        "viewPath": "salesincentive.view"
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "RouteProductDetails",
+          "pattern": "ProductDetails",
+          "target": [
+            "TargetProductDetails"
+          ]
+        },
+        {
+          "name": "RouteSalesInvoice",
+          "pattern": "SalesInvoice/{product}/{year}/{month}",
+          "target": "TargetSalesInvoice"
+        }
+      ],
+      "targets": {
+         "TargetHome": {
+          "id": "Home",
+          "name": "Home"
+        },
+        "TargetProductDetails": {
+          "id": "ProductDetails",
+          "name": "ProductDetails"
+        },
+        "TargetSalesInvoice": {
+        "id": "SalesInvoice",
+        "name": "SalesInvoice"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "salesincentive.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

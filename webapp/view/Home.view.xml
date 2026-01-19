@@ -1,0 +1,13 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="salesincentive.controller.Home"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="homePageId" showHeader="false">
+        <GenericTile class="homeTile" header="Sales Summary" press="onPressTile"
+         subheader="Product wise Sales Report">
+            <TileContent>
+                <core:Icon src="sap-icon://expense-report" size="30px" height="100px" ></core:Icon>
+            </TileContent>
+        </GenericTile>
+    </Page>
+</mvc:View>
