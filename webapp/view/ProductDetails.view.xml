@@ -6,13 +6,18 @@
         <customHeader>
             <Bar>
                 <contentLeft>
+                    <core:Icon src="sap-icon://home" press="onHomePress" size="20px"></core:Icon>
+                    <ToolbarSpacer width="12px"/>
                     <Title text="Product-wise Sales Summary"/>
                 </contentLeft>
 
                 <contentRight>
-                    <HBox >
+                    <HBox>
                         <Label  text="Month:" class="sapUiTinyMarginEnd"/>
-                        <Select id="monthSelect" width="90px">
+                        <Select
+                            id="monthSelect"
+                            width="120px"
+                            forceSelection="true">
                             <items>
                                 <core:Item key="JAN" text="JAN"/>
                                 <core:Item key="FEB" text="FEB"/>
@@ -28,6 +33,7 @@
                                 <core:Item key="DEC" text="DEC"/>
                             </items>
                         </Select>
+
 
                         <ToolbarSpacer width="12px"/>
 

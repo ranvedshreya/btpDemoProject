@@ -17,6 +17,7 @@ sap.ui.define([
             this.onGoPress(); 
         },
 
+
         onGoPress: function () {
             var oView = this.getView();
             var sMonth = this.byId("monthSelect").getSelectedKey();
@@ -56,10 +57,14 @@ sap.ui.define([
             });
         },
         
-        onNavBack: function () {
-            sap.ui.core.UIComponent
-                .getRouterFor(this)
-                .navTo("RouteHome");
+        // onNavBack: function () {
+        //     sap.ui.core.UIComponent.getRouterFor(this)
+        //     .navTo("RouteHome");
+        // },
+        
+        onHomePress: function () {
+            sap.ui.core.UIComponent.getRouterFor(this)
+            .navTo("RouteHome");
         },
 
      
