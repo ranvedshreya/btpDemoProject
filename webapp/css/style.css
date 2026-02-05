@@ -1,5 +1,6 @@
 .homeTile{
-    margin: 2%;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 .productsTable{
     margin: 2%;
@@ -10,3 +11,21 @@
     background-color: rgb(232, 232, 248);
     border: 1px solid rgb(231, 228, 228);
 }
+.adjustmentTable{
+    margin: 2%;
+}
+.adjustmentTable th{
+    background-color: rgb(232, 232, 248);
+    border: 1px solid rgb(231, 228, 228);
+}
+.hScrollBox{
+    overflow-x: auto;
+    width: 100%;
+}
+.yellowBackground {
+    background-color: yellow !important;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+

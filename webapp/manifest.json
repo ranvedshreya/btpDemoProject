@@ -33,6 +33,18 @@
           "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "invoiceService": {
+        "uri": "/sap/opu/odata/sap/ZC_INVOICE_SALES_CDS/",
+        "type": "OData",
+        "settings": { "odataVersion": "2.0" }
+      },
+      "salesAdjService": {
+        "uri": "/sap/opu/odata/sap/ZSALES_ADJ_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
       }
     }
   },
@@ -59,7 +71,7 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.viz": {} 
+        "sap.viz": {}
       }
     },
     "contentDensities": {
@@ -73,15 +85,25 @@
           "bundleName": "salesincentive.i18n.i18n"
         }
       },
-     "": {
-      "dataSource": "mainService",
-      "type": "sap.ui.model.odata.v2.ODataModel", 
-      "preload": true,
-      "settings": {
+      "": {
+        "dataSource": "mainService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "preload": true,
+        "settings": {
           "defaultBindingMode": "TwoWay",
           "useBatch": true
+        }
+      },
+      "invoiceModel": {
+        "dataSource": "invoiceService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": { "useBatch": true }
+      },
+      "salesAdjModel": {
+        "dataSource": "salesAdjService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {"useBatch": false }
       }
-    }
     },
     "resources": {
       "css": [
@@ -121,10 +143,15 @@
           "name": "RouteSalesInvoice",
           "pattern": "SalesInvoice/{product}/{year}/{month}",
           "target": "TargetSalesInvoice"
+        },
+        {
+          "name": "RouteSalesAdjustment",
+          "pattern": "SalesAdjustment",
+          "target": "TargetSalesAdjustment"
         }
       ],
       "targets": {
-         "TargetHome": {
+        "TargetHome": {
           "id": "Home",
           "name": "Home"
         },
@@ -133,8 +160,12 @@
           "name": "ProductDetails"
         },
         "TargetSalesInvoice": {
-        "id": "SalesInvoice",
-        "name": "SalesInvoice"
+          "id": "SalesInvoice",
+          "name": "SalesInvoice"
+        },
+        "TargetSalesAdjustment": {
+          "id": "SalesAdjustment",
+          "name": "SalesAdjustment"
         }
       }
     },
@@ -144,5 +175,9 @@
       "id": "App",
       "async": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "salesincentive"
   }
 }

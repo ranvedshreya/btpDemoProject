@@ -10,6 +10,10 @@ sap.ui.define([
       onPressTile: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.navTo("RouteProductDetails");
+      },
+       onPressTile2: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("RouteSalesAdjustment");
       }
   });
 });

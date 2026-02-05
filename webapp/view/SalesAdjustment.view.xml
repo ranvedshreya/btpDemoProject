@@ -1,0 +1,152 @@
+<mvc:View controllerName="salesincentive.controller.SalesAdjustment"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns="sap.m">
+    <Page
+        title="Sales Invoice for Selected Product"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="sap-icon://home" press="onHomePress" size="20px"></core:Icon>
+                    <ToolbarSpacer width="12px"/>
+                    <Title text="Sales Adjustment"/>
+                </contentLeft>
+
+                <contentRight>
+                    <HBox>
+                        <Label  text="Company Code:" class="sapUiTinyMarginEnd"/>
+                        <Input id="companyCodeInput"
+                        liveChange="onCompanyCodeChange"
+                         width="140px" value="1000"/>
+
+                        <ToolbarSpacer width="12px"/>
+
+                        <Label text="From:" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+                       <DatePicker
+                        id="fromDatePicker"
+                        width="120px"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd-MM-yyyy"/>
+
+                        <ToolbarSpacer width="12px"/>
+                         <Label text="To:" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+
+                        <DatePicker
+                        id="toDatePicker"
+                        width="120px"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd-MM-yyyy"/>
+
+                        <ToolbarSpacer width="12px"/>
+                        
+                        <Button
+                            text="Go"
+                            type="Emphasized"
+                            press="onGoPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+
+                        <ToolbarSpacer width="12px"/>
+                        
+                        <Button
+                            text="Edit"
+                            type="Emphasized"
+                            press="onEditPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+                        <ToolbarSpacer width="12px"/>
+                        
+                        <Button
+                            text="Save"
+                            type="Emphasized"
+                            press="onSavePress"
+                            class="sapUiTinyMarginBegin"
+                        />
+
+                    </HBox>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        
+
+    <ScrollContainer
+    height="600px"
+    vertical="true"
+    horizontal="true">
+        <Table
+        id="salesAdjustmentTable"
+        class="adjustmentTable"
+        mode="MultiSelect"
+        sticky="ColumnHeaders"
+        selectionChange="onSelectionChange"
+        fixedLayout="true"
+        noDataText="Press Go button to see the data.."
+        >
+            <columns>
+                <Column width="140px"><Text text="Invoice Number" wrapping="false" /></Column>
+                <Column width="140px"><Text text="Invoice Item" wrapping="false" /></Column>
+                <Column width="140px"><Text text="Plant" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Plant Name" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Division" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Division Name" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Region" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Region Name" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Order Date" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Invoice Date" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Invoice Month" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Invoice Year" wrapping="false" class="yellowBackground"/></Column>
+                <Column width="140px"><Text text="FY" wrapping="false" class="yellowBackground"/></Column>
+                <Column width="140px"><Text text="Period" wrapping="false" class="yellowBackground"/></Column>
+                <Column width="140px"><Text text="LR Date" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Material No" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Material Desc" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Batch Number" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Expiry Date" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Customer Number" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Customer Name" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Product Qty" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Product Value" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Product Tax Amount" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Receipt Date" wrapping="false"/></Column>
+                <Column width="140px"><Text text="Payment Terms" wrapping="false"/></Column>
+            </columns>
+
+            <ColumnListItem id="salesAdjustmentItem">
+                    <cells>
+                        <Text text="{invoiceModel>InvoiceNumber}" wrapping="false" />
+                        <Text text="{invoiceModel>InvoiceItem}" wrapping="false"/>
+                        <Text text="{invoiceModel>Plant}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>PlantName}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>Division}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>DivisionName}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>Region}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>RegionName}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>OrderDate}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>InvoiceDate}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>InvoiceMonth}" wrapping="false"></Text>
+                        <Input value="{invoiceModel>InvoiceYear}" editable="false"/>
+                        <Input value="{invoiceModel>FY}" editable="false"/>
+                        <Input value="{invoiceModel>Period}" editable="false"/>                        <Text text="{invoiceModel>LRDate}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>MaterialNo}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>MaterialDesc}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>BatchNumber}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>ExpiryDate}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>CustomerNumber}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>CustomerName}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>ProductQty}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>ProductValue}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>ProductTaxAmount}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>ReceiptDate}" wrapping="false"></Text>
+                        <Text text="{invoiceModel>PaymentTerms}" wrapping="false"></Text>
+                    </cells>
+                </ColumnListItem>
+        </Table>
+    </ScrollContainer>
+    </Page>
+</mvc:View>

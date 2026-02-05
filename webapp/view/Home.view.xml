@@ -6,7 +6,14 @@
         <GenericTile class="homeTile" header="Sales Summary" press="onPressTile"
          subheader="Product wise Sales Report">
             <TileContent>
-                <core:Icon src="sap-icon://expense-report" size="30px" height="100px" ></core:Icon>
+                <core:Icon src="sap-icon://business-objects-experience" size="30px" height="100px" ></core:Icon>
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="homeTile" header="Sales Adjustment" press="onPressTile2"
+         subheader="Collections Data">
+            <TileContent>
+                <core:Icon src="sap-icon://chart-table-view" size="30px" height="100px" ></core:Icon>
             </TileContent>
         </GenericTile>
     </Page>
