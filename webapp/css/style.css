@@ -22,9 +22,11 @@
     overflow-x: auto;
     width: 100%;
 }
-.yellowBackground {
-    background-color: yellow !important;
+.redBackground {
+    background-color: rgb(231, 35, 35) !important;
     display: inline-block;
+    color: white !important;
+    text-align: center !important;
     width: 100%;
     box-sizing: border-box;
 }

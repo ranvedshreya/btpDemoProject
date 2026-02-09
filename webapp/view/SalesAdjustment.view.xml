@@ -22,15 +22,16 @@
                         <Label  text="Company Code:" class="sapUiTinyMarginEnd"/>
                         <Input id="companyCodeInput"
                         liveChange="onCompanyCodeChange"
-                         width="140px" value="1000"/>
+                        width="50px" value="1000"/>
 
                         <ToolbarSpacer width="12px"/>
 
                         <Label text="From:" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
 
-                       <DatePicker
+                       <DatePicker 
                         id="fromDatePicker"
                         width="120px"
+                        change="onDateChange"
                         valueFormat="yyyy-MM-dd"
                         displayFormat="dd-MM-yyyy"/>
 
@@ -40,6 +41,7 @@
                         <DatePicker
                         id="toDatePicker"
                         width="120px"
+                        change="onDateChange"
                         valueFormat="yyyy-MM-dd"
                         displayFormat="dd-MM-yyyy"/>
 
@@ -56,7 +58,7 @@
                         
                         <Button
                             text="Edit"
-                            type="Emphasized"
+                            type="Attention"
                             press="onEditPress"
                             class="sapUiTinyMarginBegin"
                         />
@@ -64,7 +66,8 @@
                         
                         <Button
                             text="Save"
-                            type="Emphasized"
+                            type="Success"
+                            icon="none"
                             press="onSavePress"
                             class="sapUiTinyMarginBegin"
                         />
@@ -100,9 +103,9 @@
                 <Column width="140px"><Text text="Order Date" wrapping="false"/></Column>
                 <Column width="140px"><Text text="Invoice Date" wrapping="false"/></Column>
                 <Column width="140px"><Text text="Invoice Month" wrapping="false"/></Column>
-                <Column width="140px"><Text text="Invoice Year" wrapping="false" class="yellowBackground"/></Column>
-                <Column width="140px"><Text text="FY" wrapping="false" class="yellowBackground"/></Column>
-                <Column width="140px"><Text text="Period" wrapping="false" class="yellowBackground"/></Column>
+                <Column width="140px"><Text text="Invoice Year" wrapping="false" class="redBackground"/></Column>
+                <Column width="140px"><Text text="FY" wrapping="false" class="redBackground"/></Column>
+                <Column width="140px"><Text text="Period" wrapping="false" class="redBackground"/></Column>
                 <Column width="140px"><Text text="LR Date" wrapping="false"/></Column>
                 <Column width="140px"><Text text="Material No" wrapping="false"/></Column>
                 <Column width="140px"><Text text="Material Desc" wrapping="false"/></Column>
@@ -132,7 +135,8 @@
                         <Text text="{invoiceModel>InvoiceMonth}" wrapping="false"></Text>
                         <Input value="{invoiceModel>InvoiceYear}" editable="false"/>
                         <Input value="{invoiceModel>FY}" editable="false"/>
-                        <Input value="{invoiceModel>Period}" editable="false"/>                        <Text text="{invoiceModel>LRDate}" wrapping="false"></Text>
+                        <Input value="{invoiceModel>Period}" editable="false"/>
+                        <Text text="{invoiceModel>LRDate}" wrapping="false"></Text>
                         <Text text="{invoiceModel>MaterialNo}" wrapping="false"></Text>
                         <Text text="{invoiceModel>MaterialDesc}" wrapping="false"></Text>
                         <Text text="{invoiceModel>BatchNumber}" wrapping="false"></Text>
