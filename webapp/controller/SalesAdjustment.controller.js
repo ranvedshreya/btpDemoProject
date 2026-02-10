@@ -8,11 +8,9 @@ sap.ui.define([
         },
 
         onGoPress: function () {
-            var oView = this.getView();
-            var oTable = oView.byId("salesAdjustmentTable");
-            var oTemplate = this.byId("salesAdjustmentItem");
+            var oTable = this.byId("salesAdjustmentTable");
 
-            var sBukrs = this.byId("companyCodeInput").getValue();
+            var sBukrs = this.byId("companyCodeInput").getValue().trim();
             var oFromDate = this.byId("fromDatePicker").getDateValue();
             var oToDate = this.byId("toDatePicker").getDateValue();
 
@@ -21,26 +19,57 @@ sap.ui.define([
                 return;
             }
 
-            // Helper to format Date object to YYYYMMDD string
+            // format date to YYYYMMDD
             var fnFormatToABAP = function (oDate) {
-                var sYear = oDate.getFullYear();
-                var sMonth = ("0" + (oDate.getMonth() + 1)).slice(-2);
-                var sDay = ("0" + oDate.getDate()).slice(-2);
-                return sYear + sMonth + sDay;
+                var y = oDate.getFullYear();
+                var m = ("0" + (oDate.getMonth() + 1)).slice(-2);
+                var d = ("0" + oDate.getDate()).slice(-2);
+                return y + m + d;
             };
 
             var sFrom = fnFormatToABAP(oFromDate);
             var sTo = fnFormatToABAP(oToDate);
 
-            // Correct OData V2 Path Syntax for parameterized entities
-            var sBindingPath = "invoiceModel>/ZC_Invoice_Sales(p_bukrs='" + sBukrs + "',p_from='" + sFrom +
-                "',p_to='" + sTo + "')/Set";
+            var sPath =
+                "invoiceModel>/ZC_Invoice_Sales(p_bukrs='" + sBukrs + 
+                "',p_from='" +  sFrom + "',p_to='" + sTo + "')/Set";
 
-            console.log("Binding Path:", sBindingPath);
+            oTable.removeAllItems();
 
             oTable.bindItems({
-                path: sBindingPath,
-                template: oTemplate
+                path: sPath,
+                factory: function () {
+                    return new sap.m.ColumnListItem({
+                        cells: [
+                            new sap.m.Text({ text: "{invoiceModel>InvoiceNumber}" }),
+                            new sap.m.Text({ text: "{invoiceModel>InvoiceItem}" }),
+                            new sap.m.Text({ text: "{invoiceModel>Plant}" }),
+                            new sap.m.Text({ text: "{invoiceModel>PlantName}" }),
+                            new sap.m.Text({ text: "{invoiceModel>Division}" }),
+                            new sap.m.Text({ text: "{invoiceModel>DivisionName}" }),
+                            new sap.m.Text({ text: "{invoiceModel>Region}" }),
+                            new sap.m.Text({ text: "{invoiceModel>RegionName}" }),
+                            new sap.m.Text({ text: "{invoiceModel>OrderDate}" }),
+                            new sap.m.Text({ text: "{invoiceModel>InvoiceDate}" }),
+                            new sap.m.Text({ text: "{invoiceModel>InvoiceMonth}" }),
+                            new sap.m.Input({ value: "{invoiceModel>InvoiceYear}", editable: false }),
+                            new sap.m.Input({ value: "{invoiceModel>FY}", editable: false }),
+                            new sap.m.Input({ value: "{invoiceModel>Period}", editable: false }),
+                            new sap.m.Text({ text: "{invoiceModel>LRDate}" }),
+                            new sap.m.Text({ text: "{invoiceModel>MaterialNo}" }),
+                            new sap.m.Text({ text: "{invoiceModel>MaterialDesc}" }),
+                            new sap.m.Text({ text: "{invoiceModel>BatchNumber}" }),
+                            new sap.m.Text({ text: "{invoiceModel>ExpiryDate}" }),
+                            new sap.m.Text({ text: "{invoiceModel>CustomerNumber}" }),
+                            new sap.m.Text({ text: "{invoiceModel>CustomerName}" }),
+                            new sap.m.Text({ text: "{invoiceModel>ProductQty}" }),
+                            new sap.m.Text({ text: "{invoiceModel>ProductValue}" }),
+                            new sap.m.Text({ text: "{invoiceModel>ProductTaxAmount}" }),
+                            new sap.m.Text({ text: "{invoiceModel>ReceiptDate}" }),
+                            new sap.m.Text({ text: "{invoiceModel>PaymentTerms}" })
+                        ]
+                    });
+                }
             });
         },
 
@@ -93,15 +122,10 @@ sap.ui.define([
                 });
             }
         },
-
-
-
         onHomePress: function () {
             sap.ui.core.UIComponent.getRouterFor(this)
                 .navTo("RouteHome");
         },
-
-
         onSavePress: function () {
             var oTable = this.byId("salesAdjustmentTable");
             var aSelectedItems = oTable.getSelectedItems();
@@ -180,32 +204,6 @@ sap.ui.define([
             oTable.removeSelections();
             this._editEnabled = false;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     });
 });
