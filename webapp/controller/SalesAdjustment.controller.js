@@ -82,10 +82,12 @@ sap.ui.define([
                 oInput.setValue(sValue.substring(0, 4));
             }
         },
+        
         onAfterRendering: function () {
             this.byId("fromDatePicker").$().find("input").attr("readonly", true);
             this.byId("toDatePicker").$().find("input").attr("readonly", true);
         },
+
         onEditPress: function () {
             var oTable = this.byId("salesAdjustmentTable");
             var aItems = oTable.getSelectedItems();
@@ -104,6 +106,7 @@ sap.ui.define([
                 aCells[13].setEditable(true); // Period
             });
         },
+
         onSelectionChange: function (oEvent) {
             if (!this._editEnabled) {
                 return; // Edit not pressed → do nothing
@@ -122,10 +125,28 @@ sap.ui.define([
                 });
             }
         },
+
         onHomePress: function () {
             sap.ui.core.UIComponent.getRouterFor(this)
                 .navTo("RouteHome");
+            this._resetPage();
         },
+
+        _resetPage: function () {
+            // Clear inputs
+            this.byId("companyCodeInput").setValue("1000");
+            this.byId("fromDatePicker").setValue("");
+            this.byId("toDatePicker").setValue("");
+
+            // Clear table
+            var oTable = this.byId("salesAdjustmentTable");
+            oTable.removeAllItems();
+            oTable.removeSelections();
+
+            // Reset edit flag
+            this._editEnabled = false;
+        },
+
         onSavePress: function () {
             var oTable = this.byId("salesAdjustmentTable");
             var aSelectedItems = oTable.getSelectedItems();
