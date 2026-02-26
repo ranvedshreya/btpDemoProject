@@ -1,0 +1,219 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+    <Dialog
+        id="FDMisChartDialog"
+        title="Payer-wise Distribution"
+        contentWidth="1200px"
+        contentHeight="600px"
+        resizable="true"
+        draggable="true"
+    >
+
+        <content>
+            <layout:Grid
+                defaultSpan="L6 M6 S12"
+                hSpacing="0.5"
+                vSpacing="0"
+                width="100%">
+            <viz:VizFrame
+                id="chartCurrentFD"
+                width="100%"
+                height="240px"
+                vizType="pie"
+                vizProperties="{
+                    'title': {
+                        'visible': true,
+                        'text': 'CurrentFD Distribution'
+                    },
+                    'plotArea': {
+                        'dataLabel': {
+                            'visible': true,
+                            'type': 'percentage',
+                            'showTotal': false,
+                            'hideWhenOverlap': true
+                        }
+                    },
+                    'legend': {
+                        'visible': true
+                    }
+                }">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{FDMISModel>/}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition
+                                name="BankName"
+                                value="{FDMISModel>BankName}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures >
+                            <viz.data:MeasureDefinition
+                                name="CurrentFD"
+                                value="{FDMISModel>CurrentFD}" />
+                        </viz.data:measures>
+                        
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="color" type="Dimension" values="BankName" />
+                    <viz.feeds:FeedItem uid="size" type="Measure" values="CurrentFD" />
+                </viz:feeds>
+
+            </viz:VizFrame>
+
+            <viz:VizFrame
+                id="chartBoardLimit"
+                width="100%"
+                height="240px"
+                vizType="pie"
+                vizProperties="{
+                    'title': {
+                        'visible': true,
+                        'text': 'BoardLimit Distribution'
+                    },
+                    'plotArea': {
+                        'dataLabel': {
+                            'visible': true,
+                            'type': 'percentage',
+                            'showTotal': false,
+                            'hideWhenOverlap': true
+                        }
+                    },
+                    'legend': {
+                        'visible': true
+                    }
+                }">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{FDMISModel>/}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition
+                                name="BankName"
+                                value="{FDMISModel>BankName}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures >
+                            <viz.data:MeasureDefinition
+                                name="BoardLimit"
+                                value="{FDMISModel>BoardLimit}" />
+                        </viz.data:measures>
+                        
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="color" type="Dimension" values="BankName" />
+                    <viz.feeds:FeedItem uid="size" type="Measure" values="BoardLimit" />
+                </viz:feeds>
+            </viz:VizFrame>
+
+            <viz:VizFrame
+                id="chartBalanceLimit"
+                width="100%"
+                height="240px"
+                vizType="pie"
+                vizProperties="{
+                    'title': {
+                        'visible': true,
+                        'text': 'BalanceLimit Distribution'
+                    },
+                    'plotArea': {
+                        'dataLabel': {
+                            'visible': true,
+                            'type': 'percentage',
+                            'showTotal': false,
+                            'hideWhenOverlap': true
+                        }
+                    },
+                    'legend': {
+                        'visible': true
+                    }
+                }">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{FDMISModel>/}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition
+                                name="BankName"
+                                value="{FDMISModel>BankName}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures >
+                            <viz.data:MeasureDefinition
+                                name="BalanceFDLimits"
+                                value="{FDMISModel>BalanceFDLimits}" />
+                        </viz.data:measures>
+                        
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="color" type="Dimension" values="BankName" />
+                    <viz.feeds:FeedItem uid="size" type="Measure" values="BalanceFDLimits" />
+                </viz:feeds>
+            </viz:VizFrame>
+
+            <viz:VizFrame
+                id="chartTotalFD"
+                width="100%"
+                height="240px"
+                vizType="pie"
+                vizProperties="{
+                    'title': {
+                        'visible': true,
+                        'text': 'TotalFD Distribution'
+                    },
+                    'plotArea': {
+                        'dataLabel': {
+                            'visible': true,
+                            'type': 'percentage',
+                            'showTotal': false,
+                            'hideWhenOverlap': true
+                        }
+                    },
+                    'legend': {
+                        'visible': true
+                    }
+                }">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{FDMISModel>/}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition
+                                name="BankName"
+                                value="{FDMISModel>BankName}" />
+                        </viz.data:dimensions>
+
+                        <viz.data:measures >
+                            <viz.data:MeasureDefinition
+                                name="TotalFDwithProposedAmount"
+                                value="{FDMISModel>TotalFDwithProposedAmount}" />
+                        </viz.data:measures>
+                        
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="color" type="Dimension" values="BankName" />
+                    <viz.feeds:FeedItem uid="size" type="Measure" values="TotalFDwithProposedAmount" />
+                </viz:feeds>
+
+            </viz:VizFrame>
+            </layout:Grid>
+        </content>
+
+        <endButton>
+            <Button
+                text="Close"
+                press="onCloseChart" />
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

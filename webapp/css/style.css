@@ -30,4 +30,7 @@
     width: 100%;
     box-sizing: border-box;
 }
+.noKeyboard input {
+    pointer-events: none;
+}
 

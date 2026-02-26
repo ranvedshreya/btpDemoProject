@@ -65,6 +65,15 @@ sap.ui.define([
         onHomePress: function () {
             sap.ui.core.UIComponent.getRouterFor(this)
             .navTo("RouteHome");
+
+            this.byId("monthSelect").setValue("");
+            this.byId("yearPicker").setValue("");
+
+            var oTable = this.byId("productTable");
+            if (oTable) {
+                oTable.unbindItems();
+                oTable.removeAllItems();
+            }
         },
 
      

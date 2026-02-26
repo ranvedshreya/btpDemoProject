@@ -6,10 +6,10 @@ sap.ui.define([
     return BaseController.extend("salesincentive.controller.SalesAdjustment", {
         onInit() {
         },
+        
 
         onGoPress: function () {
             var oTable = this.byId("salesAdjustmentTable");
-
             var sBukrs = this.byId("companyCodeInput").getValue().trim();
             var oFromDate = this.byId("fromDatePicker").getDateValue();
             var oToDate = this.byId("toDatePicker").getDateValue();
@@ -19,7 +19,6 @@ sap.ui.define([
                 return;
             }
 
-            // format date to YYYYMMDD
             var fnFormatToABAP = function (oDate) {
                 var y = oDate.getFullYear();
                 var m = ("0" + (oDate.getMonth() + 1)).slice(-2);
@@ -49,27 +48,63 @@ sap.ui.define([
                             new sap.m.Text({ text: "{invoiceModel>DivisionName}" }),
                             new sap.m.Text({ text: "{invoiceModel>Region}" }),
                             new sap.m.Text({ text: "{invoiceModel>RegionName}" }),
-                            new sap.m.Text({ text: "{invoiceModel>OrderDate}" }),
-                            new sap.m.Text({ text: "{invoiceModel>InvoiceDate}" }),
+                            new sap.m.Text({text: { 
+                                    path: "invoiceModel>OrderDate",
+                                    type: "sap.ui.model.type.Date",
+                                    formatOptions: {
+                                        pattern: "dd-MM-yyyy"
+                                    }
+                                }
+                            }),
+                            new sap.m.Text({text: { 
+                                    path: "invoiceModel>InvoiceDate",
+                                    type: "sap.ui.model.type.Date",
+                                    formatOptions: {
+                                        pattern: "dd-MM-yyyy"
+                                    }
+                                }
+                            }),
                             new sap.m.Text({ text: "{invoiceModel>InvoiceMonth}" }),
                             new sap.m.Input({ value: "{invoiceModel>InvoiceYear}", editable: false }),
                             new sap.m.Input({ value: "{invoiceModel>FY}", editable: false }),
                             new sap.m.Input({ value: "{invoiceModel>Period}", editable: false }),
-                            new sap.m.Text({ text: "{invoiceModel>LRDate}" }),
+                            new sap.m.Text({text: { 
+                                    path: "invoiceModel>LRDate",
+                                    type: "sap.ui.model.type.Date",
+                                    formatOptions: {
+                                        pattern: "dd-MM-yyyy"
+                                    }
+                                }
+                            }),
                             new sap.m.Text({ text: "{invoiceModel>MaterialNo}" }),
                             new sap.m.Text({ text: "{invoiceModel>MaterialDesc}" }),
                             new sap.m.Text({ text: "{invoiceModel>BatchNumber}" }),
-                            new sap.m.Text({ text: "{invoiceModel>ExpiryDate}" }),
+                            new sap.m.Text({text: { 
+                                    path: "invoiceModel>ExpiryDate",
+                                    type: "sap.ui.model.type.Date",
+                                    formatOptions: {
+                                        pattern: "dd-MM-yyyy"
+                                    }
+                                }
+                            }),
                             new sap.m.Text({ text: "{invoiceModel>CustomerNumber}" }),
                             new sap.m.Text({ text: "{invoiceModel>CustomerName}" }),
                             new sap.m.Text({ text: "{invoiceModel>ProductQty}" }),
                             new sap.m.Text({ text: "{invoiceModel>ProductValue}" }),
                             new sap.m.Text({ text: "{invoiceModel>ProductTaxAmount}" }),
-                            new sap.m.Text({ text: "{invoiceModel>ReceiptDate}" }),
+                            new sap.m.Text({text: { 
+                                    path: "invoiceModel>ReceiptDate",
+                                    type: "sap.ui.model.type.Date",
+                                    formatOptions: {
+                                        pattern: "dd-MM-yyyy"
+                                    }
+                                }
+                            }),
                             new sap.m.Text({ text: "{invoiceModel>PaymentTerms}" })
                         ]
                     });
-                }
+                },
+                templateShareable: false
             });
         },
 
@@ -82,11 +117,7 @@ sap.ui.define([
                 oInput.setValue(sValue.substring(0, 4));
             }
         },
-        
-        onAfterRendering: function () {
-            this.byId("fromDatePicker").$().find("input").attr("readonly", true);
-            this.byId("toDatePicker").$().find("input").attr("readonly", true);
-        },
+
 
         onEditPress: function () {
             var oTable = this.byId("salesAdjustmentTable");

@@ -42,10 +42,21 @@
       "salesAdjService": {
         "uri": "/sap/opu/odata/sap/ZSALES_ADJ_SRV/",
         "type": "OData",
-        "settings": {
-          "odataVersion": "2.0"
-        }
+        "settings": { "odataVersion": "2.0" }
+      },
+      "FDMISService": {
+        "uri": "/sap/opu/odata/sap/ZC_FD_MIS_SUMM_CDS/",
+        "type": "OData",
+        "settings": { "odataVersion": "2.0" }
+      },
+      "FDMISTrfService": {
+      "uri": "/sap/opu/odata/sap/ZC_FD_MIS_TRF_CDS/",
+      "type": "OData",
+      "settings": {
+        "odataVersion": "2.0"
       }
+}
+      
     }
   },
   "sap.ui": {
@@ -97,12 +108,24 @@
       "invoiceModel": {
         "dataSource": "invoiceService",
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": { "useBatch": true }
+        "settings": { "useBatch": false }
       },
       "salesAdjModel": {
         "dataSource": "salesAdjService",
         "type": "sap.ui.model.odata.v2.ODataModel",
         "settings": {"useBatch": false }
+      },
+      "FDMISModel": {
+        "dataSource": "FDMISService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {"useBatch": false }
+      },
+      "FDMISTrfModel": {
+        "dataSource": "FDMISTrfService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "useBatch": false
+        }
       }
     },
     "resources": {
@@ -148,6 +171,16 @@
           "name": "RouteSalesAdjustment",
           "pattern": "SalesAdjustment",
           "target": "TargetSalesAdjustment"
+        },
+        {
+          "name": "RouteFDMis",
+          "pattern": "FDMis",
+          "target": "TargetFDMis"
+        },
+        {
+          "name": "RouteFDMisTrf",
+          "pattern": "FDMisTrf/{TRMNo}/{Bukrs}/{ProdType}/{AsOnDate}",
+          "target": "TargetFDMisTrf"
         }
       ],
       "targets": {
@@ -166,6 +199,14 @@
         "TargetSalesAdjustment": {
           "id": "SalesAdjustment",
           "name": "SalesAdjustment"
+        },
+        "TargetFDMis": {
+          "id": "FDMis",
+          "name": "FDMis"
+        },
+        "TargetFDMisTrf": {
+          "id": "FDMisTrf",
+          "name": "FDMisTrf"
         }
       }
     },

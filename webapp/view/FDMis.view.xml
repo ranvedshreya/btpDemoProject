@@ -1,0 +1,94 @@
+<mvc:View controllerName="salesincentive.controller.FDMis"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" >
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="sap-icon://nav-back" press="onNavBack" size="20px"></core:Icon>
+                    <ToolbarSpacer width="12px"/>
+                    <Title text="Payer-wise Summary"/>
+                </contentLeft>
+
+                <contentRight>
+                    <HBox>
+                        <Label  text="Company Code:" class="sapUiTinyMarginEnd" required="true" />
+                        <Input id="comCodeInput"
+                        liveChange="onCompanyCodeChange"
+                        width="50px" value="1000" />
+
+                        <ToolbarSpacer width="12px"/>
+
+                        <Label  text="Product Type:" class="sapUiTinyMarginEnd" required="true"/>
+                        <Input id="prodTypeInput" width="50px" required="true"/>
+
+
+                        <Label text="As-on-Date" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" required="true"/>
+
+                        <DatePicker
+                        id="onDatePicker"
+                        class="noKeyboard"
+                        width="120px"
+                        change="onDateChange"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd-MM-yyyy"
+                        valueHelpOnly="true"
+                        required="true"/>
+
+                        <ToolbarSpacer width="12px"/>
+                        
+                        <Button
+                            text="Go"
+                            type="Emphasized"
+                            press="onGoPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+                        <Button
+                            text="View Chart"
+                            icon="sap-icon://bar-chart"
+                            type="Neutral"
+                            press="onChartPress"
+                            class="sapUiTinyMarginBegin"
+                        />
+
+                    </HBox>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        
+        <ScrollContainer height="400px" vertical="true" horizontal="false">
+            <Table id="FDTable" class="productsTable"
+                sticky="ColumnHeaders" >
+                <columns>
+                    <Column > <Text text="Payer" /> </Column>
+                    <Column> <Text text="Transaction"/> </Column>
+                    <Column> <Text text="Name of The Bank"/> </Column>
+                    <Column> <Text text="Board Limit"/> </Column>
+                    <Column> <Text text="Current FD"/> </Column>
+                    <Column> <Text text="Avg FD Rate"/> </Column>
+                    <Column> <Text text="Balance FD Limits"/> </Column>
+                    <Column> <Text text="New FD"/> </Column>
+                    <Column> <Text text="Total FD with Proposed Amount"/> </Column>
+                </columns>
+                <dependents>
+                <ColumnListItem id="FDTableItem" type="Navigation" press="onRowPress" >
+                    <cells>
+                        <Text text="{FDMISModel>Payer}"></Text>
+                        <Text text="{FDMISModel>TRMNo}"></Text>
+                        <Text text="{FDMISModel>BankName}"></Text>                        
+                        <Text text="{FDMISModel>BoardLimit}"></Text>
+                        <Text text="{FDMISModel>CurrentFD}"></Text>
+                        <Text text="{FDMISModel>AvgFDRate}"></Text>
+                        <Text text="{FDMISModel>BalanceFDLimits}"></Text>
+                        <Text text="{FDMISModel>NewFD}"></Text>
+                        <Text text="{FDMISModel>TotalFDwithProposedAmount}"></Text>
+                        
+                      
+                    </cells>
+                </ColumnListItem>
+                </dependents>
+            </Table>
+        </ScrollContainer>
+    </Page>
+</mvc:View>

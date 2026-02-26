@@ -30,6 +30,7 @@
 
                        <DatePicker 
                         id="fromDatePicker"
+                        class="noKeyboard"
                         width="120px"
                         change="onDateChange"
                         valueFormat="yyyy-MM-dd"
@@ -40,6 +41,7 @@
 
                         <DatePicker
                         id="toDatePicker"
+                        class="noKeyboard"
                         width="120px"
                         change="onDateChange"
                         valueFormat="yyyy-MM-dd"

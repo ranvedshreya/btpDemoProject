@@ -16,5 +16,12 @@
                 <core:Icon src="sap-icon://chart-table-view" size="30px" height="100px" ></core:Icon>
             </TileContent>
         </GenericTile>
+
+        <GenericTile class="homeTile" header="FD MIS Summary" press="onPressTile3"
+         subheader="Payer Wise and Transaction, Flow Type wise Report">
+            <TileContent>
+                <core:Icon src="sap-icon://business-objects-experience" size="30px" height="100px" ></core:Icon>
+            </TileContent>
+        </GenericTile>
     </Page>
 </mvc:View>

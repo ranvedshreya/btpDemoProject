@@ -1,0 +1,31 @@
+<mvc:View controllerName="salesincentive.controller.FDMisTrf"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page title="Transaction and Flow Type-wise FD summary"
+        showNavButton="true" navButtonPress="onNavBack">
+        
+        <ScrollContainer height="450px" vertical="true" horizontal="true">
+            <Table id="FDTrfTable" class="productsTable"
+                 sticky="ColumnHeaders"  noDataText="Loading....">
+                <columns>
+                    <Column width="120px"> <Text text="Transaction"/> </Column>
+                    <Column width="120px"> <Text text="Flow Type"/> </Column>
+                    <Column width="120px"> <Text text="Bank Name"/> </Column>
+                    <Column width="140px"> <Text text="Payer"/> </Column>
+                    <Column width="140px"> <Text text="FD Number"/> </Column>
+                    <Column width="120px"> <Text text="Term Start"/> </Column>
+                    <Column width="120px"> <Text text="Term End"/> </Column>
+                    <Column width="120px"> <Text text="Rate"/> </Column>
+                    <Column width="120px"> <Text text="Annualised"/> </Column>
+                    <Column width="120px"> <Text text="Tenor"/> </Column>
+                    <Column width="140px"> <Text text="Investment Amount"/> </Column>
+                    <Column width="140px"> <Text text="Maturity Amount"/> </Column>
+                    <Column width="140px"> <Text text="Accrual Days"/> </Column>
+                    <Column width="140px"> <Text text="Interest"/> </Column>
+                </columns>
+                
+            </Table>
+        </ScrollContainer>
+    </Page>
+</mvc:View>

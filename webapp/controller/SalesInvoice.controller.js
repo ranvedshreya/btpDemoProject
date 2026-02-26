@@ -19,7 +19,7 @@ sap.ui.define([
             this._product = oArgs.product;
             this._month   = oArgs.month;
             this._year    = oArgs.year;
-             console.log("Product:", this._product, "Month:", this._month, "Year:", this._year);
+             
             this._bindInvoiceTable();
         },
         _bindInvoiceTable: function () {
@@ -41,7 +41,15 @@ sap.ui.define([
                     cells: [
                         new sap.m.Text({ text: "{SalesInvoice}" }),
                         new sap.m.Text({ text: "{LineItem}" }),
-                        new sap.m.Text({ text: "{InvoiceDate}" }),
+                        new sap.m.Text({
+                            text: {
+                                path: "InvoiceDate",
+                                type: "sap.ui.model.type.Date",
+                                formatOptions: {
+                                    pattern: "dd-MM-yyyy"
+                                }
+                            }
+                        }),
                         new sap.m.Text({ text: "{SalesGroup}" }),
                         new sap.m.Text({ text: "{CustomerCode}" }),
                         new sap.m.Text({ text: "{CustomerName}" }),
