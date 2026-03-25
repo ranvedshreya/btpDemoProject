@@ -1,0 +1,312 @@
+<mvc:View
+ controllerName="salesincentive.controller.SalesDetails"
+ xmlns:mvc="sap.ui.core.mvc"
+ xmlns="sap.m"
+ xmlns:table="sap.ui.table"
+ xmlns:core="sap.ui.core">
+
+    <Page id="page4" showHeader="true" showNavButton="true" navButtonPress="onNavBack">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" press="onNavBack" type="Transparent"/>
+                    <ToolbarSpacer width="12px"/>
+                    <Title text="Sales Invoice Details"/>
+                </contentLeft>
+
+                <contentRight>
+                    <HBox>
+                        <Label text="Plant:" class="sapUiTinyMarginEnd"/>
+                        <Input id="plantInput" width="50px"/>
+
+                        <ToolbarSpacer width="12px"/>
+
+                        <Label text="Division:" class="sapUiTinyMarginEnd"/>
+                        <Input id="divisionInput" width="50px"/>
+
+                        <ToolbarSpacer width="12px"/>
+
+                        <Label text="Date:" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+                        <DatePicker
+                        id="dtPicker"
+                        width="120px"
+                        change="onDateChange"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="dd-MM-yyyy"/>
+
+                        <Button
+                        text="Go"
+                        type="Emphasized"
+                        press="onGoPress"
+                        class="sapUiTinyMarginBegin"/>
+                    </HBox>
+                </contentRight>
+
+            </Bar>
+        </customHeader>
+
+        <table:Table
+            id="salesInvTable"
+            rows="invoiceModel>/ZC_Invoice_Details"
+            visibleRowCount="20"
+            selectionMode="MultiToggle"
+            enableColumnReordering="true"
+            width="100%">
+
+            <table:columns>
+                <table:Column>
+                    <Label text="Billing Document"/>
+                    <table:template>
+                        <Text text="{BillingDocument}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Billing Item"/>
+                    <table:template>
+                        <Text text="{BillingItem}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Billing Type"/>
+                    <table:template>
+                        <Text text="{BillingType}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Billing Type Text"/>
+                    <table:template>
+                        <Text text="{BillingTypeText}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Billing Date"/>
+                    <table:template>
+                        <Text text="{BillingDate}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Document Date"/>
+                    <table:template>
+                        <Text text="{DocumentDate}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Sales Order"/>
+                    <table:template>
+                        <Text text="{SalesOrder}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Order Type"/>
+                    <table:template>
+                        <Text text="{OrderType}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="Division"/>
+                    <table:template>
+                        <Text text="{Division}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                    <Label text="RefDivision"/>
+                    <table:template>
+                        <Text text="{RefDivision}"/>
+                    </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Plant"/>
+                <table:template>
+                <Text text="{Plant}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Plant Name"/>
+                <table:template>
+                <Text text="{PlantName}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Region"/>
+                <table:template>
+                <Text text="{Region}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Sales Office"/>
+                <table:template>
+                <Text text="{SalesOffice}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Sales Office Name"/>
+                <table:template>
+                <Text text="{SalesOfficeName}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Customer"/>
+                <table:template>
+                <Text text="{Customer}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Customer Name"/>
+                <table:template>
+                <Text text="{CustomerName}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="PAN No"/>
+                <table:template>
+                <Text text="{PANNo}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="RefNo"/>
+                <table:template>
+                <Text text="{RefNo}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="RefDate"/>
+                <table:template>
+                <Text text="{RefDate}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Material"/>
+                <table:template>
+                <Text text="{Material}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Material Description"/>
+                <table:template>
+                <Text text="{MaterialDescription}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Material Group"/>
+                <table:template>
+                <Text text="{MaterialGroup}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Batch"/>
+                <table:template>
+                <Text text="{Batch}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Total Qty"/>
+                <table:template>
+                <Text text="{TotalQty}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Order Qty"/>
+                <table:template>
+                <Text text="{OrderQty}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Delivered Qty"/>
+                <table:template>
+                <Text text="{DeliveredQty}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Pending Qty"/>
+                <table:template>
+                <Text text="{PendingQty}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Order Value"/>
+                <table:template>
+                <Text text="{OrderValue}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Net Value"/>
+                <table:template>
+                <Text text="{NetValue}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Document Condition"/>
+                <table:template>
+                <Text text="{DocumentCondition}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Document Item"/>
+                <table:template>
+                <Text text="{DocumentItem}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Condition Record No"/>
+                <table:template>
+                <Text text="{ConditionRecordNo}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Condition Value"/>
+                <table:template>
+                <Text text="{ConditionValue}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Condition Type"/>
+                <table:template>
+                <Text text="{ConditionType}"/>
+                </table:template>
+              </table:Column>
+
+                <table:Column>
+                <Label text="Condition Rate"/>
+                <table:template>
+                <Text text="{ConditionRate}"/>
+                </table:template>
+              </table:Column>
+            </table:columns>
+        </table:Table>
+    </Page>
+</mvc:View>

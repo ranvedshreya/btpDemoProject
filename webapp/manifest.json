@@ -37,26 +37,34 @@
       "invoiceService": {
         "uri": "/sap/opu/odata/sap/ZC_INVOICE_SALES_CDS/",
         "type": "OData",
-        "settings": { "odataVersion": "2.0" }
+        "settings": {
+          "odataVersion": "2.0"
+        }
       },
       "salesAdjService": {
         "uri": "/sap/opu/odata/sap/ZSALES_ADJ_SRV/",
         "type": "OData",
-        "settings": { "odataVersion": "2.0" }
+        "settings": {
+          "odataVersion": "2.0"
+        }
       },
       "FDMISService": {
         "uri": "/sap/opu/odata/sap/ZC_FD_MIS_SUMM_CDS/",
         "type": "OData",
-        "settings": { "odataVersion": "2.0" }
+        "settings": {
+          "odataVersion": "2.0"
+        }
       },
       "FDMISTrfService": {
-      "uri": "/sap/opu/odata/sap/ZC_FD_MIS_TRF_CDS/",
-      "type": "OData",
-      "settings": {
-        "odataVersion": "2.0"
+        "uri": "/sap/opu/odata/sap/ZC_FD_MIS_TRF_CDS/",
+        "type": "OData",
+        "settings": {"odataVersion": "2.0"}
+      },
+      "invoiceDetailsService": {
+        "uri": "/sap/opu/odata/sap/ZC_INVOICE_DETAILS_CDS/",
+        "type": "OData",
+        "settings": {"odataVersion": "2.0"}
       }
-}
-      
     }
   },
   "sap.ui": {
@@ -108,24 +116,31 @@
       "invoiceModel": {
         "dataSource": "invoiceService",
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": { "useBatch": false }
+        "settings": {
+          "useBatch": false
+        }
       },
       "salesAdjModel": {
         "dataSource": "salesAdjService",
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {"useBatch": false }
+        "settings": {
+          "useBatch": false
+        }
       },
       "FDMISModel": {
         "dataSource": "FDMISService",
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {"useBatch": false }
+        "settings": {"useBatch": false}
       },
       "FDMISTrfModel": {
         "dataSource": "FDMISTrfService",
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "settings": {
-          "useBatch": false
-        }
+        "settings": { "useBatch": false}
+      },
+      "invoiceDetailsModel": {
+        "dataSource": "invoiceDetailsService",
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {"useBatch": false}
       }
     },
     "resources": {
@@ -179,8 +194,13 @@
         },
         {
           "name": "RouteFDMisTrf",
-          "pattern": "FDMisTrf/{TRMNo}/{Bukrs}/{ProdType}/{AsOnDate}",
+          "pattern": "FDMisTrf/{Payer}/{Bukrs}/{ProdType}/{AsOnDate}",
           "target": "TargetFDMisTrf"
+        },
+        {
+          "name": "RouteSalesDetails",
+          "pattern": "SalesDetails",
+          "target": "TargetSalesDetails"
         }
       ],
       "targets": {
@@ -207,6 +227,10 @@
         "TargetFDMisTrf": {
           "id": "FDMisTrf",
           "name": "FDMisTrf"
+        },
+        "TargetSalesDetails": {
+          "id": "SalesDetails",
+          "name": "SalesDetails"
         }
       }
     },

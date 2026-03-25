@@ -12,8 +12,14 @@
         <customHeader>
             <Bar>
                 <contentLeft>
-                    <core:Icon src="sap-icon://home" press="onHomePress" size="20px"></core:Icon>
-                    <ToolbarSpacer width="12px"/>
+                    <Image src="{headerModel>/logoPath}"
+                    height="2.5rem" alt="Company Logo"
+                    press="onLogoPress" decorative="false"/>
+                    
+                    <Button 
+                        icon="sap-icon://nav-back" 
+                        press="onNavBack" 
+                        type="Transparent" />
                     <Title text="Sales Adjustment"/>
                 </contentLeft>
 

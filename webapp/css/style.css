@@ -1,6 +1,21 @@
 .homeTile{
     margin-left: 2%;
     margin-top: 2%;
+    box-sizing: border-box !important; 
+    border: 2px solid rgba(0, 0, 0, 0.352) !important; 
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+}
+
+.myBackground {
+    /* background-image: url("../images/SAP-BG.jpg") !important; */
+    background-repeat: no-repeat !important;
+    background-position: right center !important;
+
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                      url("../images/SAP-BG.jpg") !important; 
 }
 .productsTable{
     margin: 2%;
@@ -33,4 +48,6 @@
 .noKeyboard input {
     pointer-events: none;
 }
+
+
 

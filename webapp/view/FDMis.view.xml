@@ -6,8 +6,14 @@
         <customHeader>
             <Bar>
                 <contentLeft>
-                    <core:Icon src="sap-icon://nav-back" press="onNavBack" size="20px"></core:Icon>
-                    <ToolbarSpacer width="12px"/>
+                    <Image src="{headerModel>/logoPath}"
+                    height="2.5rem" alt="Company Logo"
+                    press="onLogoPress" decorative="false"/>
+                    
+                    <Button 
+                        icon="sap-icon://nav-back" 
+                        press="onNavBack" 
+                        type="Transparent" />
                     <Title text="Payer-wise Summary"/>
                 </contentLeft>
 
@@ -33,7 +39,7 @@
                         change="onDateChange"
                         valueFormat="yyyy-MM-dd"
                         displayFormat="dd-MM-yyyy"
-                        valueHelpOnly="true"
+                    
                         required="true"/>
 
                         <ToolbarSpacer width="12px"/>
@@ -57,15 +63,18 @@
             </Bar>
         </customHeader>
         
-        <ScrollContainer height="400px" vertical="true" horizontal="false">
+        
             <Table id="FDTable" class="productsTable"
-                sticky="ColumnHeaders" >
+                sticky="ColumnHeaders"  updateFinished="onTableUpdateFinished">
                 <columns>
                     <Column > <Text text="Payer" /> </Column>
-                    <Column> <Text text="Transaction"/> </Column>
                     <Column> <Text text="Name of The Bank"/> </Column>
                     <Column> <Text text="Board Limit"/> </Column>
                     <Column> <Text text="Current FD"/> </Column>
+                    <Column> <Text text="Callable"/> </Column>
+                    <Column> <Text text="Non-Callable"/> </Column>
+                    <Column> <Text text="FD-Lein"/> </Column>
+                    <Column> <Text text="FD Free Of Charge"/> </Column>
                     <Column> <Text text="Avg FD Rate"/> </Column>
                     <Column> <Text text="Balance FD Limits"/> </Column>
                     <Column> <Text text="New FD"/> </Column>
@@ -75,10 +84,13 @@
                 <ColumnListItem id="FDTableItem" type="Navigation" press="onRowPress" >
                     <cells>
                         <Text text="{FDMISModel>Payer}"></Text>
-                        <Text text="{FDMISModel>TRMNo}"></Text>
                         <Text text="{FDMISModel>BankName}"></Text>                        
                         <Text text="{FDMISModel>BoardLimit}"></Text>
                         <Text text="{FDMISModel>CurrentFD}"></Text>
+                        <Text text="{FDMISModel>Callable}"></Text>
+                        <Text text="{FDMISModel>NonCallable}"></Text>
+                        <Text text="{FDMISModel>FD_Lein}"></Text>
+                        <Text text="{FDMISModel>FD_FreeOfCharge}"></Text>
                         <Text text="{FDMISModel>AvgFDRate}"></Text>
                         <Text text="{FDMISModel>BalanceFDLimits}"></Text>
                         <Text text="{FDMISModel>NewFD}"></Text>
@@ -89,6 +101,6 @@
                 </ColumnListItem>
                 </dependents>
             </Table>
-        </ScrollContainer>
+    
     </Page>
 </mvc:View>

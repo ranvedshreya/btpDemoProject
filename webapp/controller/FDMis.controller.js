@@ -11,8 +11,15 @@ sap.ui.define([
     return Controller.extend("salesincentive.controller.FDMis", {
 
         onInit() { 
-            var oDatePicker = this.getView().byId("onDatePicker");
-            oDatePicker.setMinDate(new Date());
+            // var oDatePicker = this.getView().byId("onDatePicker");
+            // oDatePicker.setMinDate(new Date());
+
+            var sLogoPath = sap.ui.require.toUrl("salesincentive/images/alkem.jpg");
+    
+            var oHeaderModel = new sap.ui.model.json.JSONModel({
+                logoPath: sLogoPath
+            });
+            this.getView().setModel(oHeaderModel, "headerModel");
         },
 
         
@@ -49,6 +56,22 @@ sap.ui.define([
                 template: oTemplate,
                 templateShareable: true
             });
+
+        },
+        onTableUpdateFinished: function () {
+            var oTable = this.byId("FDTable");
+            var aItems = oTable.getItems();
+
+            aItems.forEach(function (oItem) {
+                var oCtx = oItem.getBindingContext("FDMISModel");
+                if (!oCtx) return;
+
+                var oData = oCtx.getObject();
+
+                if (oData.Payer === "TOTAL") {
+                    oItem.addStyleClass("totalRow");
+                }
+            });
         },
 
        onRowPress: function (oEvent) {
@@ -73,7 +96,7 @@ sap.ui.define([
             var sOnDate = fnFormatToABAP(this.byId("onDatePicker").getDateValue());
 
             oRouter.navTo("RouteFDMisTrf", {
-                TRMNo: oData.TRMNo,
+                Payer: oData.Payer,
                 Bukrs: sCompanyCode,
                 ProdType: sProductType,
                 AsOnDate: sOnDate
@@ -169,7 +192,20 @@ sap.ui.define([
                 }
             }
             this._oChartDialog.close();
-        }
+        },
+        onLogoPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteHome");
+
+            this.byId("prodTypeInput").setValue("");
+            this.byId("onDatePicker").setValue("");
+
+            var oTable = this.byId("FDTable");
+            if (oTable) {
+                oTable.unbindItems();
+                oTable.removeAllItems();
+            }
+        },
 
     });
 });

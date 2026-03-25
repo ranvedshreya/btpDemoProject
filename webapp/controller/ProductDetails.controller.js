@@ -11,10 +11,20 @@ sap.ui.define([
     return Controller.extend("salesincentive.controller.ProductDetails", {
 
         onInit() {
+            //for logo
+            var sLogoPath = sap.ui.require.toUrl("salesincentive/images/alkem.jpg");
+            var oHeaderModel = new sap.ui.model.json.JSONModel({
+                logoPath: sLogoPath
+            });
+            this.getView().setModel(oHeaderModel, "headerModel");
+
+            //for year only
             var oYearPicker = this.byId("yearPicker");
             oYearPicker.setMaxDate(new Date());
 
             this.onGoPress(); 
+                       
+
         },
 
 
@@ -57,14 +67,22 @@ sap.ui.define([
             });
         },
         
-        // onNavBack: function () {
-        //     sap.ui.core.UIComponent.getRouterFor(this)
-        //     .navTo("RouteHome");
-        // },
-        
-        onHomePress: function () {
+        onNavBack: function () {
             sap.ui.core.UIComponent.getRouterFor(this)
             .navTo("RouteHome");
+
+            this.byId("monthSelect").setValue("");
+            this.byId("yearPicker").setValue("");
+
+            var oTable = this.byId("productTable");
+            if (oTable) {
+                oTable.unbindItems();
+                oTable.removeAllItems();
+            }
+        },
+        onLogoPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteHome");
 
             this.byId("monthSelect").setValue("");
             this.byId("yearPicker").setValue("");

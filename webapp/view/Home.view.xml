@@ -2,12 +2,17 @@
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="homePageId" showHeader="false">
+    <Page id="homePageId" class="myBackground">
+        <customHeader>
+            <core:Fragment fragmentName="salesincentive.fragment.GlobalHeader" type="XML" />
+        </customHeader>
         <GenericTile class="homeTile" header="Sales Summary" press="onPressTile"
          subheader="Product wise Sales Report">
+
             <TileContent>
                 <core:Icon src="sap-icon://business-objects-experience" size="30px" height="100px" ></core:Icon>
             </TileContent>
+            
         </GenericTile>
 
         <GenericTile class="homeTile" header="Sales Adjustment" press="onPressTile2"
@@ -19,6 +24,12 @@
 
         <GenericTile class="homeTile" header="FD MIS Summary" press="onPressTile3"
          subheader="Payer Wise and Transaction, Flow Type wise Report">
+            <TileContent>
+                <core:Icon src="sap-icon://business-objects-experience" size="30px" height="100px" ></core:Icon>
+            </TileContent>
+        </GenericTile>
+        <GenericTile class="homeTile" header="Sales Details" press="onPressTile4"
+         subheader="Sales Invoice Details">
             <TileContent>
                 <core:Icon src="sap-icon://business-objects-experience" size="30px" height="100px" ></core:Icon>
             </TileContent>

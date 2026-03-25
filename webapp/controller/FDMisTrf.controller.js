@@ -8,15 +8,28 @@ sap.ui.define([
     return Controller.extend("salesincentive.controller.FDMisTrf", {
 
         onInit: function () {
+            //when press the row then it should redirect the FDMisTrf page
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("RouteFDMisTrf")
                 .attachPatternMatched(this._onObjectMatched, this);
+                
+            //for logo
+            var sLogoPath = sap.ui.require.toUrl("salesincentive/images/alkem.jpg");
+            var oHeaderModel = new sap.ui.model.json.JSONModel({
+                logoPath: sLogoPath
+            });
+            this.getView().setModel(oHeaderModel, "headerModel");
+        },
+
+        onLogoPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteHome");
+            this.byId("FDTrfTable")?.unbindItems();
         },
 
         _onObjectMatched: function(oEvent) {
             var oArgs = oEvent.getParameter("arguments");
-
-            var sTRMNo = oArgs.TRMNo;
+            var sPayer = oArgs.Payer;
             var sBukrs = oArgs.Bukrs;
             var sProdType = oArgs.ProdType;
             var sOnDate = oArgs.AsOnDate;
@@ -31,8 +44,9 @@ sap.ui.define([
             oTable.bindItems({
                 path: sBindingPath,
                 filters: [
-                    new Filter("TRMNo", FilterOperator.EQ, sTRMNo)
+                    new Filter("Payer", FilterOperator.EQ, sPayer)
                 ],
+                 
                 template: new sap.m.ColumnListItem({
                     type: "Navigation",
                     cells: [
@@ -75,5 +89,6 @@ sap.ui.define([
         onNavBack: function () {
             sap.ui.core.UIComponent.getRouterFor(this).navTo("RouteFDMis");
         }
+       
     });
 });

@@ -3,10 +3,24 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
 
-    <Page
-        title="Sales Invoice for Selected Product"
-        showNavButton="true"
-        navButtonPress="onNavBack">
+    <Page>
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <!-- <Image src="{headerModel>/logoPath}"
+                    height="2.5rem" alt="Company Logo"
+                    press="onLogoPress" decorative="false"/> -->
+
+                    <Button 
+                        icon="sap-icon://nav-back" 
+                        press="onNavBack" 
+                        type="Transparent" />
+                    <Title text="Sales Invoice for Selected Product"/>
+                    
+                </contentLeft>
+            </Bar>
+        </customHeader>
 
         <Table id="salesInvoiceTable"  class="productsTable" sticky="ColumnHeaders" noDataText="Loading...">
             <columns>

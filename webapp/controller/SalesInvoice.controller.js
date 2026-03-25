@@ -8,9 +8,24 @@ sap.ui.define([
     return Controller.extend("salesincentive.controller.SalesInvoice", {
 
         onInit: function () {
+            //for logo
+            var sLogoPath = sap.ui.require.toUrl("salesincentive/images/alkem.jpg");
+    
+            var oHeaderModel = new sap.ui.model.json.JSONModel({
+                logoPath: sLogoPath
+            });
+            this.getView().setModel(oHeaderModel, "headerModel");
+
+            //for match the row and redirect to sales invoice page
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("RouteSalesInvoice")
                 .attachPatternMatched(this._onRouteMatched, this);
+        },
+        onLogoPress: function () {
+
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteHome").refresh();
         },
 
         _onRouteMatched: function (oEvent) {

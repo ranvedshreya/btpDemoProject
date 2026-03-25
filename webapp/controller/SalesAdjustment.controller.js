@@ -5,6 +5,12 @@ sap.ui.define([
 
     return BaseController.extend("salesincentive.controller.SalesAdjustment", {
         onInit() {
+            var sLogoPath = sap.ui.require.toUrl("salesincentive/images/alkem.jpg");
+    
+            var oHeaderModel = new sap.ui.model.json.JSONModel({
+                logoPath: sLogoPath
+            });
+            this.getView().setModel(oHeaderModel, "headerModel");
         },
         
 
@@ -157,9 +163,14 @@ sap.ui.define([
             }
         },
 
-        onHomePress: function () {
+        onNavBack: function () {
             sap.ui.core.UIComponent.getRouterFor(this)
                 .navTo("RouteHome");
+            this._resetPage();
+        },
+        onLogoPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("RouteHome");
             this._resetPage();
         },
 

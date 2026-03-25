@@ -2,13 +2,22 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" showHeader="true">
+    <Page id="page" showHeader="true" showNavButton="true"
+        navButtonPress="onNavBack">
+        
         <customHeader>
             <Bar>
                 <contentLeft>
-                    <core:Icon src="sap-icon://home" press="onHomePress" size="20px"></core:Icon>
-                    <ToolbarSpacer width="12px"/>
+                    <Image src="{headerModel>/logoPath}"
+                    height="2.5rem" alt="Company Logo"
+                    press="onLogoPress" decorative="false"/>
+
+                    <Button 
+                        icon="sap-icon://nav-back" 
+                        press="onNavBack" 
+                        type="Transparent" />
                     <Title text="Product-wise Sales Summary"/>
+                    
                 </contentLeft>
 
                 <contentRight>
@@ -41,6 +50,7 @@
 
                         <DatePicker
                             id="yearPicker"
+                            class="noKeyboard"
                             displayFormat="yyyy"
                             valueFormat="yyyy"
                             width="90px"/>
@@ -66,7 +76,6 @@
             </Bar>
         </customHeader>
         
-        <ScrollContainer height="400px" vertical="true" horizontal="false">
             <Table id="productTable" class="productsTable"
                 items="{/ZC_ProductDetailsSet}" sticky="ColumnHeaders" >
                 <columns>
@@ -89,6 +98,5 @@
                     </cells>
                 </ColumnListItem>
             </Table>
-        </ScrollContainer>
     </Page>
 </mvc:View>

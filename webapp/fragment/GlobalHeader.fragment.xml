@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Bar>
+        <contentLeft>
+            <Image src="{headerModel>/logoPath}"
+             height="2.5rem" alt="Company Logo"
+             press="onLogoPress" decorative="false"/>
+        </contentLeft>
+        <contentMiddle>
+            <Title text="Sales Incentive Dashboard" level="H2" />
+        </contentMiddle>
+        <!-- <contentRight>
+            <Avatar
+                id="userAvatar"
+                initials="DU"
+                displaySize="XS"
+                displayShape="Circle"
+                press="onUserPress"
+                class="sapUiSmallMarginBegin"/>
+        </contentRight> -->
+    </Bar>
+
+</core:FragmentDefinition>
